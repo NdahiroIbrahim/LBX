@@ -37,6 +37,10 @@
         width: 100%;
         height: 100vh;
     }
+    .waitlist {
+        text-align: center;
+        justify-content: center;
+    }
 }
 
 .nav-bar ul{
