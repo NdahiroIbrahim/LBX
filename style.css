@@ -70,6 +70,31 @@ ul i{
     font-size: 20px;
     position: right;
 }
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+  
+  .line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease;
+  }
+  .menu-icon.active .line:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+  }
+  
+  .menu-icon.active .line:nth-child(2) {
+    opacity: 0; /* Hide middle line */
+  }
+  
+  .menu-icon.active .line:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+  }
+  
 body{
     background-color: rgb(240, 240, 240);
 }
@@ -123,6 +148,13 @@ h2{
 .wait-list{
     text-align: center;
     justify-content: center;
+    font-family: "parkinsans", sans-serif;
+
+}
+.wait-list :hover{
+    cursor: pointer;
+    color:brown ;
+    padding: 5px;
 }
 
 .links{
