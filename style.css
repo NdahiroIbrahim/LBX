@@ -124,18 +124,35 @@ h2{
     width: 100vw;
     height: 100vh;
 }
-.overlay-text{
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-80px);
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        transform: translateX(2);
+    }
+}
+
+.overlay-text {
     position: absolute;
     top: 50%;
     left: 40%;
     transform: translate(-50%, -50%);
-    transition: 2.0s;
-    background-color: rgba(0,0,0,0.8);
+    transition: 3.0s; /* This works for changes after load */
+    animation: fadeIn 5s ease-in; /* Add this for page load */
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     text-align: center;
     padding: 20px;
     color: white;
     font-size: 15px;
+}
+.h11{
+    text-align: center;
 }
 #content{
     display: flex;
@@ -191,4 +208,43 @@ footer p{
     background-color: rgb(235, 234, 234);
     border-radius: 10px;
     margin-top: 20px;
+}
+.footer-content{
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    background-color: rgb(221, 221, 221);
+    border-radius: 10px;
+}
+.footer-content :hover{
+    transition: ease-out;
+    transition: 0.5s;
+    box-shadow:#f7eccd;
+    cursor: pointer;
+    background-color: #e9e2d1;
+}
+.footer-icon{
+    max-height:40px;
+    max-width:10px;
+    margin-left: 10px;
+}
+.footer-icon :hover{
+    transform: scale(0.5);
+}
+.footer-content h3{
+    text-align: center;
+}
+.footer-content ul{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    gap: 10px;
+    text-align: center;
+
+}
+.footer-content ul li a{
+    font-family: "poppins", sans-serif ;
+    list-style-type: none;
+    text-decoration: none;
+    color: brown;
 }

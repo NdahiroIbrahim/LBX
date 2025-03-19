@@ -1,11 +1,4 @@
 
-function handleSubmit() {
-    const button = document.getElementById("submit-button");
-
-    button.addEventListener("click",() => {
-        alert("still in devlopment...")
-
-        
-    });
+function redirectToSignup(){
+    window.location.href ="signup.html";
 }
-handleSubmit();
