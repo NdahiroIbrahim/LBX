@@ -35,7 +35,7 @@ document.getElementById("waitlistForm").addEventListener("submit", function(even
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
 
-    fetch("http://127.0.0.1:5000/waitlist", {
+    fetch("https://lbex-backend.onrender.com/waitlist", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"  
