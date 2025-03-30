@@ -32,8 +32,14 @@ body {
 h2 {
     font-size: 1.8em;
     margin-bottom: 10px;
+    font-family: sans-serif;
 }
-
+.title-text{
+    font-family:'Times New Roman';
+}
+.desc-text{
+    font-family:sans-serif;
+}
 /* Input Group */
 .input-group {
     margin-bottom: 15px;
@@ -43,6 +49,7 @@ h2 {
 /* Labels */
 .input-group label {
     font-size: 14px;
+    font-family: sans-serif;
     font-weight: 600;
     color: #fff;
     display: block;
@@ -96,7 +103,7 @@ h2 {
 }
 
 .message.success {
-    background-color: #2ecc71;
+    background-color: #5e9173;
     color: #fff;
     display: block;
 }

@@ -1,0 +1,29 @@
+<h2>Business Waitlist Registration</h2>
+<form id="businessForm">
+    <input type="text" id="businessName" placeholder="Business Name" required>
+    <input type="email" id="businessEmail" placeholder="Email" required>
+    <input type="text" id="industry" placeholder="Industry" required>
+    <input type="text" id="location" placeholder="Location" required>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("businessForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const businessData = {
+        name: document.getElementById("businessName").value,
+        email: document.getElementById("businessEmail").value,
+        industry: document.getElementById("industry").value,
+        location: document.getElementById("location").value
+    };
+
+    fetch("https://lbex-backend.onrender.com/register-business", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(businessData)
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error:", error));
+});
+</script>
