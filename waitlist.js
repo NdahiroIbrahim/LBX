@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         userForm.addEventListener("submit", function (e) {
             e.preventDefault();
             const userData = {
-                name: document.getElementsById("name").value,
+                name: document.getElementById("name").value,
                 email:document.getElementById("email").value,
             };
 
