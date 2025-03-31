@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 email:document.getElementById("email").value,
             };
 
-            fetch("hhtps://lbex-backend.onrender.com/waitlist", {
+            fetch("https://lbex-backend.onrender.com/waitlist", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(userData),
