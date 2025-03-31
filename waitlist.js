@@ -1,69 +1,98 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // to handle the user waitlist form (trader / investor)
+    // Handle the user waitlist form (trader/investor)
     const userForm = document.getElementById("waitlistForm");
     if (userForm) {
         userForm.addEventListener("submit", function (e) {
             e.preventDefault();
-            const userData = {
-                name: document.getElementById("name").value.trim(),
-                email:document.getElementById("email").value.trim(),
-            };
+            const name = document.getElementById("name")?.value.trim();
+            const email = document.getElementById("email")?.value.trim();
 
-            console.log("Sending Data:", userData);
+            if (!name || !email) {
+                showPopup("Please fill in all required fields.");
+                return;
+            }
+
+            const userData = { name, email };
+
+            console.log("Sending User Data:", userData);
 
             fetch("https://lbex-backend.onrender.com/waitlist", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(userData),
             })
             .then(response => response.json())
-            .then(data => showPopup(data.message))
+            .then(data => {
+                console.log("Server Response:", data);
+                if (data.error) {
+                    showPopup(`Error: ${data.error}`);
+                } else {
+                    showPopup(data.message || "Successfully added to the waitlist!");
+                }
+            })
             .catch(error => console.error("Error:", error));
         });
     }
 
-    //Handling Business Waitlist Form
+    // Handle Business Waitlist Form
     const businessForm = document.getElementById("businessForm");
     if (businessForm) {
         businessForm.addEventListener("submit", function (e) {
             e.preventDefault();
-            const businessData = {
-                name: document.getElementById("businessName").value,
-                email:document.getElementById("businessEmail").value,
-                industry: document.getElementById("industry").value,
-                location: document.getElementById("location").value,
-            };
+            const name = document.getElementById("businessName")?.value.trim();
+            const email = document.getElementById("businessEmail")?.value.trim();
+            const industry = document.getElementById("industry")?.value.trim();
+            const location = document.getElementById("location")?.value.trim();
+
+            if (!name || !email || !industry || !location) {
+                showPopup("Please fill in all required fields.");
+                return;
+            }
+
+            const businessData = { name, email, industry, location };
+
+            console.log("Sending Business Data:", businessData);
+
             fetch("https://lbex-backend.onrender.com/register-business", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(businessData),
             })
             .then(response => response.json())
-            .then(data => showPopup(data.message))
-            .catch(error => console.error("Error:", error))
+            .then(data => {
+                console.log("Server Response:", data);
+                if (data.error) {
+                    showPopup(`Error: ${data.error}`);
+                } else {
+                    showPopup(data.message || "Business successfully registered!");
+                }
+            })
+            .catch(error => console.error("Error:", error));
         });
     }
 
-    //Function to display the popup message
-
+    // Function to display the popup message
     function showPopup(message) {
         const popup = document.createElement("div");
         popup.classList.add("popup");
         popup.innerHTML = `
-        <div class="popup-content">
-           <p>${message}</p>
-           <button onclick="closePopup()">OK</button>
-        </div>
+            <div class="popup-content">
+                <p>${message}</p>
+                <button onclick="closePopup()">OK</button>
+            </div>
         `;
         document.body.appendChild(popup);
     }
 
-    //Function to close the popup
-
+    // Function to close the popup
     window.closePopup = function () {
         const popup = document.querySelector(".popup");
         if (popup) {
             popup.remove();
+        }
+        if (window.currentForm) {
+            window.currentForm.reset(); 
+            window.currentForm = null; 
         }
     };
 });
