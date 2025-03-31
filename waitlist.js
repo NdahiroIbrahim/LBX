@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             const businessData = {
                 name: document.getElementById("businessName").value,
-                email:document.getElemntById("businessEmail").value,
+                email:document.getElementById("businessEmail").value,
                 industry: document.getElementById("industry").value,
                 location: document.getElementById("location").value,
             };
