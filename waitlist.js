@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.error) {
                     showPopup(`Error: ${data.error}`);
                 } else {
-                    showPopup(data.message || "Successfully added to the waitlist!");
+                    showPopup(data.message || "Successfully added to the waitlist!", userForm);
                 }
             })
             .catch(error => console.error("Error:", error));
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.error) {
                     showPopup(`Error: ${data.error}`);
                 } else {
-                    showPopup(data.message || "Business successfully registered!");
+                    showPopup(data.message || "Business successfully registered!", businessForm);
                 }
             })
             .catch(error => console.error("Error:", error));
@@ -72,20 +72,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to display the popup message
-    function showPopup(message) {
+    function showPopup(message, form = null) {
         const popup = document.createElement("div");
         popup.classList.add("popup");
         popup.innerHTML = `
             <div class="popup-content">
                 <p>${message}</p>
-                <button onclick="closePopup()">OK</button>
+                <button id="popupCloseBtn">OK</button>
             </div>
         `;
         document.body.appendChild(popup);
+
+        window.currentForm = form;
+        
+        document.getElementById("popupCloseBtn").addEventListener("click", closePopup);
     }
 
-    // Function to close the popup
-    window.closePopup = function () {
+    // Function to close the popup and reset form
+    function closePopup() {
         const popup = document.querySelector(".popup");
         if (popup) {
             popup.remove();
@@ -94,5 +98,5 @@ document.addEventListener("DOMContentLoaded", function () {
             window.currentForm.reset(); 
             window.currentForm = null; 
         }
-    };
+    }
 });
