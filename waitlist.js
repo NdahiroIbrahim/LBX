@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
         userForm.addEventListener("submit", function (e) {
             e.preventDefault();
             const userData = {
-                name: document.getElementById("name").value,
-                email:document.getElementById("email").value,
+                name: document.getElementById("name").value.trim(),
+                email:document.getElementById("email").value.trim(),
             };
+
             console.log("Sending Data:", userData);
+
             fetch("https://lbex-backend.onrender.com/waitlist", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
