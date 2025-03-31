@@ -1,4 +1,8 @@
-<h2>Business Waitlist Registration</h2>
+<head>
+    <link rel="stylesheet" href="business-waitlist.css">
+</head>
+<div class="container">
+<h2>Register your business to the waitlist</h2>
 <form id="businessForm">
     <input type="text" id="businessName" placeholder="Business Name" required>
     <input type="email" id="businessEmail" placeholder="Email" required>
@@ -6,6 +10,7 @@
     <input type="text" id="location" placeholder="Location" required>
     <button type="submit">Submit</button>
 </form>
+</div>
 
 <script>
 document.getElementById("businessForm").addEventListener("submit", function(e) {
