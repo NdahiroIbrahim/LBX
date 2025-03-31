@@ -44,13 +44,15 @@
 }
 .nav-bar {
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1; 
     padding: 5px 0px;
-    background-color: black;
-    height: 10px;
+    height: 0px;
 }
 
 .nav-bar ul{
@@ -61,6 +63,7 @@
     margin-top: 0px;
     overflow: hidden;
     border-radius: 1px;
+    display: flex; 
 }
 .nav-bar li{    
     float: right;
