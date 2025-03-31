@@ -6,6 +6,7 @@
     <title>LBX - Join the Waitlist</title>
     <link rel="stylesheet" href="signup-style.css">
 </head>
+<script src="waitlist.js"></script>
 <body>
     <div class="container">
         <h2 class="title-text">Join the LBEx Waitlist</h2>
@@ -30,42 +31,5 @@
 
     </div>
 
-    <script>
-document.getElementById("waitlistForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    alert("Form submitted!");
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-
-    fetch("https://lbex-backend.onrender.com/waitlist", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"  
-        },
-        body: JSON.stringify({ name, email })  
-    })
-    .then(response => response.json())
-    .then(data => {
-        const message = document.getElementById("message");
-        if (data.error) {
-            message.innerText = `Error: ${data.error}`;
-            message.className = "message error";
-        } else {
-            message.innerText = "Successfully added to waitlist!";
-            message.className = "message success";
-            document.getElementById("waitlistForm").reset();
-            setTimeout(() => {
-                window.location.href = "thankyou.html";
-            }, 2000);
-        }
-    })
-    .catch(error => {
-        const message = document.getElementById("message");
-        message.innerText = "Something went wrong. Please try again.";
-        message.className = "message error";
-    });
-});
-    </script>
-</body>
+ </body>
 </html>
