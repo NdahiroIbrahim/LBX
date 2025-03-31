@@ -72,31 +72,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to display the popup message
-    function showPopup(message, form = null) {
+    function showPopup(message) {
+        const overlay = document.createElement("div");
+        overlay.classList.add("popup-overlay");
+    
         const popup = document.createElement("div");
         popup.classList.add("popup");
         popup.innerHTML = `
             <div class="popup-content">
                 <p>${message}</p>
-                <button id="popupCloseBtn">OK</button>
+                <button onclick="closePopup()">OK</button>
             </div>
         `;
+    
+        document.body.appendChild(overlay);
         document.body.appendChild(popup);
-
-        window.currentForm = form;
-        
-        document.getElementById("popupCloseBtn").addEventListener("click", closePopup);
     }
-
-    // Function to close the popup and reset form
-    function closePopup() {
-        const popup = document.querySelector(".popup");
-        if (popup) {
-            popup.remove();
-        }
-        if (window.currentForm) {
-            window.currentForm.reset(); 
-            window.currentForm = null; 
-        }
-    }
+    
+    // Close popup and remove overlay
+    window.closePopup = function () {
+        document.querySelector(".popup")?.remove();
+        document.querySelector(".popup-overlay")?.remove();
+    };
+    
 });
