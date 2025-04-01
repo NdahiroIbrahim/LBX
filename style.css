@@ -137,7 +137,7 @@ h2{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    margin-left:20px;
+    margin-right:10px;
 }
 @keyframes fadeIn {
     from {
