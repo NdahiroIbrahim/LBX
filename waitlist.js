@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const userData = { name, email };
 
-            console.log("Sending User Data:", userData);
-
             fetch("https://lbex-backend.onrender.com/waitlist", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log("Server Response:", data);
                 if (data.error) {
-                    showPopup(`Error: ${data.error}`);
+                    showPopup(`Error: User already registered`);
                 } else {
                     showPopup(data.message || "Successfully added to the waitlist!", userForm);
                 }
@@ -62,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log("Server Response:", data);
                 if (data.error) {
-                    showPopup(`Error: ${data.error}`);
+                    showPopup(`Error:Business already Registered`);
                 } else {
                     showPopup(data.message || "Business successfully registered!", businessForm);
                 }
