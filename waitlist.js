@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const userData = { name, email };
 
-            fetch("https://lbex-backend.onrender.com/waitlist", {
+            fetch("https://lbex-backend.onrender.com", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(userData),
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log("Server Response:", data);
                 if (data.error) {
-                    showPopup(`Error: User already registered`);
+                    showPopup(`Error: !!`);
                 } else {
                     showPopup(data.message || "Successfully added to the waitlist!", userForm);
                 }
