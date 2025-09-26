@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const userData = { name, email };
 
-            fetch("https://lbex-backend.onrender.com", {
+            fetch("https://lbex-backend.onrender.com/waitlist", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(userData),
