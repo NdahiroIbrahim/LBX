@@ -2,15 +2,15 @@
 .nav-bar {
   background: rgba(0, 0, 0, 0.85);
   padding: clamp(0.2em, 0.5vw, 0.6em) clamp(1em, 2vw, 2em);
-  border-radius: clamp(3px, 1vw, 10px);
+  border-radius: clamp(1px, 1vw, 10px);
   position: absolute;
   top: 1%;
-  left: 50%;
+  left: 42%;
   transform: translateX(-50%);
   display: inline-block;
   z-index: 20;
   backdrop-filter: blur(2px);
-  max-width: 95%;
+  max-width: 100%;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
