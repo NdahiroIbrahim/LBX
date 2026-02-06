@@ -118,7 +118,7 @@
   margin-bottom: 1em;
   font-size: clamp(1.5rem, 3vw, 1.9rem);
   font-weight: 600;
-  color: #fca07b;
+  color: #ff9064;
   font-family: sans-serif;
 }
 
@@ -126,15 +126,18 @@
   margin-bottom: 2em;
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
   line-height: clamp(1.4, 1.6, 1.7);
-  color: #cfcfcf;
-  font-family: sans-serif;
+  color: #9c9c9c;
+  font-family: sans-serif;;
 }
 
 #About .content-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 20vw, 260px), 1fr));
-  background-color: #ffffff;
+  background-color: #e7e7e7;
   gap: clamp(1em, 2vw, 2em);
+  margin-top: 1px;
+  border-radius: 5px;
+  
 }
 
 #About .feature {
@@ -142,11 +145,12 @@
   border-radius: clamp(8px, 1vw, 14px);
   padding: clamp(1em, 2vw, 2em);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-spacing: 5px;
 }
 
 #About .feature:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 3px #df6a3b;
+  box-shadow: 0 4px 3px #777777;
 }
 
 #About .feature h3 {
@@ -156,6 +160,7 @@
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
   margin-bottom: 0.75em;
   color: #000000;
+  font-family: sans-serif;
 }
 
 #About .feature i {
