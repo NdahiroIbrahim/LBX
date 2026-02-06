@@ -1,19 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="business-waitlist.css">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon_io (2)/favicon-32x32.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LBEx - Business Waitlist</title>
+  <link rel="icon" type="image/x-icon" href="./assets/favicon_io (2)/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
 </head>
-<script src="waitlist.js"></script>
 <body>
-    <div class="container">
-        <h2>Register your business to the waitlist</h2>
-        <form id="businessForm">
-            <input type="text" id="businessName" placeholder="Business Name" required>
-            <input type="email" id="businessEmail" placeholder="Email" required>
-            <input type="text" id="industry" placeholder="Industry" required>
-            <input type="text" id="location" placeholder="Location" required>
-            <button type="submit">Submit</button>
-        </form>
-        </div>
+  <header>
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="signup.html">Investor Waitlist</a></li>
+        <li><a href="#Contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Register Your Business to the Waitlist</h2>
+    <p>Be among the first to tokenize your business with LBEx.</p>
+
+    <form id="businessForm">
+      <div class="input-group">
+        <label for="businessName">Business Name</label>
+        <input type="text" id="businessName" placeholder="Enter your business name" required>
+      </div>
+
+      <div class="input-group">
+        <label for="businessEmail">Email</label>
+        <input type="email" id="businessEmail" placeholder="Enter business email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="industry">Industry</label>
+        <input type="text" id="industry" placeholder="e.g., Retail, Transport" required>
+      </div>
+
+      <div class="input-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" placeholder="City / Town" required>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <footer id="Contact">
+    <div class="footer-content">
+      <h3>Contact Us</h3>
+      <ul>
+        <li>
+          <a class="links" href="mailto:hassanibrahimndahiro@gmail.com">
+            hassanibrahimndahiro@gmail.com
+            <img class="footer-icon" src="./images/email.svg" alt="Email Icon">
+          </a>
+        </li>
+        <li>
+          Phone: +254 740 500 484
+          <a href="contact.vcf" download="LBExContact.vcf" style="color: brown;">Download Contact</a>
+          <img class="footer-icon" src="./images/phone-solid.svg" alt="Phone Icon">
+        </li>
+      </ul>
+      <p>&copy; 2025 LBEx. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./waitlist.js"></script>
 </body>
+</html>

@@ -1,9 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Handle the user waitlist form (trader/investor)
+document.addEventListener("DOMContentLoaded", () => {
+    // --- Helper: Show Popup ---
+    function showPopup(message) {
+        // Remove existing popup if any
+        document.querySelector(".popup")?.remove();
+        document.querySelector(".popup-overlay")?.remove();
+
+        const overlay = document.createElement("div");
+        overlay.className = "popup-overlay";
+
+        const popup = document.createElement("div");
+        popup.className = "popup";
+        popup.innerHTML = `
+            <div class="popup-content">
+                <p>${message}</p>
+                <button id="popupCloseBtn">OK</button>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.appendChild(popup);
+
+        document.getElementById("popupCloseBtn").addEventListener("click", () => {
+            popup.remove();
+            overlay.remove();
+        });
+    }
+
+    // --- Handle User Waitlist Form ---
     const userForm = document.getElementById("waitlistForm");
     if (userForm) {
-        userForm.addEventListener("submit", function (e) {
+        userForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+
             const name = document.getElementById("name")?.value.trim();
             const email = document.getElementById("email")?.value.trim();
 
@@ -12,31 +40,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const userData = { name, email };
+            try {
+                const response = await fetch("http://127.0.0.1:5000/waitlist", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email }),
+                });
 
-            fetch("https://lbex-backend.onrender.com/waitlist", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(userData),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Server Response:", data);
+                const data = await response.json();
+
                 if (data.error) {
-                    showPopup(`Error: !!`);
+                    showPopup(`Error: ${data.error}`);
                 } else {
-                    showPopup(data.message || "Successfully added to the waitlist!", userForm);
+                    showPopup(data.message || "Successfully added to the waitlist!");
+                    userForm.reset();
                 }
-            })
-            .catch(error => console.error("Error:", error));
+            } catch (err) {
+                console.error(err);
+                showPopup("Network error. Please try again later.");
+            }
         });
     }
 
-    // Handle Business Waitlist Form
+    // --- Handle Business Waitlist Form ---
     const businessForm = document.getElementById("businessForm");
     if (businessForm) {
-        businessForm.addEventListener("submit", function (e) {
+        businessForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+
             const name = document.getElementById("businessName")?.value.trim();
             const email = document.getElementById("businessEmail")?.value.trim();
             const industry = document.getElementById("industry")?.value.trim();
@@ -47,50 +78,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const businessData = { name, email, industry, location };
+            try {
+                const response = await fetch("http://127.0.0.1:5000/register-business", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, industry, location }),
+                });
 
-            console.log("Sending Business Data:", businessData);
+                const data = await response.json();
 
-            fetch("https://lbex-backend.onrender.com/register-business", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(businessData),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Server Response:", data);
                 if (data.error) {
-                    showPopup(`Error:Business already Registered`);
+                    showPopup(`Error: ${data.error}`);
                 } else {
-                    showPopup(data.message || "Business successfully registered!", businessForm);
+                    showPopup(data.message || "Business successfully registered!");
+                    businessForm.reset();
                 }
-            })
-            .catch(error => console.error("Error:", error));
+            } catch (err) {
+                console.error(err);
+                showPopup("Network error. Please try again later.");
+            }
         });
     }
-
-    // Function to display the popup message
-    function showPopup(message) {
-        const overlay = document.createElement("div");
-        overlay.classList.add("popup-overlay");
-    
-        const popup = document.createElement("div");
-        popup.classList.add("popup");
-        popup.innerHTML = `
-            <div class="popup-content">
-                <p>${message}</p>
-                <button onclick="closePopup()">OK</button>
-            </div>
-        `;
-    
-        document.body.appendChild(overlay);
-        document.body.appendChild(popup);
-    }
-    
-    // Close popup and remove overlay
-    window.closePopup = function () {
-        document.querySelector(".popup")?.remove();
-        document.querySelector(".popup-overlay")?.remove();
-    };
-    
 });
