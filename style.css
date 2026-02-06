@@ -109,7 +109,7 @@
 }
 
 #About {
-  background: #000000;
+  background: #ffffff;
   padding: clamp(1em, 2vw, 2em);
   border-radius: clamp(5px, 1vw, 10px);
 }
@@ -133,7 +133,7 @@
 #About .content-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 20vw, 260px), 1fr));
-  background-color: #161616;
+  background-color: #ffffff;
   gap: clamp(1em, 2vw, 2em);
 }
 
@@ -155,23 +155,23 @@
   align-items: center;
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
   margin-bottom: 0.75em;
-  color: #f5f5f5;
+  color: #000000;
 }
 
 #About .feature i {
   font-size: clamp(0.8rem, 1.2vw, 0.95rem);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(245, 2, 2, 0.6);
 }
 
 #About .feature p {
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
-  color: #bdbdbd;
+  color: #868686;
   line-height: clamp(1.4, 1.6, 1.6);
 }
 
-/* ----------------- FOOTER ----------------- */
+
 #Contact {
-  background-color: #161616;
+  background-color: #7a7a7a;
   padding: clamp(1em, 2vw, 2em) clamp(1em, 2vw, 2em) clamp(2em, 4vw, 4em);
   color: #cfcfcf;
   border-radius: clamp(5px, 1vw, 10px);
@@ -227,6 +227,6 @@
 
 .footer-content p {
   font-size: clamp(0.75rem, 1vw, 0.85rem);
-  color: #8f8f8f;
+  color: #000000;
   margin-top: 2em;
 }
